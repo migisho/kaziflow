@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaziFlow - Main View Preview</title>
+    <link rel="stylesheet" href="./media/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vscode-codicons/0.0.33/codicon.min.css">
+    </head>
+<body>
+    <div class="container">
+        <h1 class="app-title">KaziFlow</h1>
+    
+        <section class="project-info-section">
+            <p>Project: <strong>MyAwesomeProject</strong></p>
+            <details class="accordion branches-accordion">
+                <summary>Branches (3) | Current: <strong>feature/new-design</strong></summary>
+                <div class="accordion-content">
+                    <ul class="branches-list">
+                        <li><vscode-button appearance="secondary" class="branch-checkout-btn" data-branch-name="main">main</vscode-button></li>
+                        <li><vscode-button appearance="primary" class="branch-checkout-btn" data-branch-name="feature/new-design">feature/new-design</vscode-button></li>
+                        <li><vscode-button appearance="secondary" class="branch-checkout-btn" data-branch-name="bugfix/login-issue">bugfix/login-issue</vscode-button></li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    
+        <hr>
+    
+        <section class="action-buttons-section">
+            <vscode-button id="create-feature-btn" appearance="primary">Create New Item</vscode-button>
+            <vscode-button id="refresh-webview-btn" appearance="secondary" title="Refresh KaziFlow View">
+                <span class="codicon codicon-refresh"></span> Refresh
+            </vscode-button>
+        </section>
+    
+        <section class="items-list-section">
+            <details class="accordion work-item-accordion feature-item" data-item-id="feature-123" open> <summary>
+                    <vscode-tag>FEATURE</vscode-tag>
+                    Implement User Authentication 
+                    <vscode-link class="item-pin-link" data-item-id="feature-123" title="Go to pin for this feature">
+                        <span class="codicon codicon-pin"></span>
+                    </vscode-link>
+                    (<vscode-badge>feature/user-auth</vscode-badge>)
+                </summary>
+                <div class="accordion-content work-item-details">
+                    <p class="item-pin-info">Pinned: auth.js (line 42)</p>
+                    <div class="task-input-container">
+                        <vscode-text-field id="task-input-feature-123" placeholder="New task for User Authentication" size="30"></vscode-text-field>
+                        <vscode-button appearance="secondary" data-feature-id="feature-123" class="add-task-btn">Add Task</vscode-button>
+                    </div>
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <div class="task-line">
+                                <vscode-checkbox id="task-abc" data-feature-id="feature-123" data-task-id="task-abc" class="task-checkbox" checked>
+                                    Design login UI
+                                </vscode-checkbox>
+                                <vscode-link class="task-pin-link" data-item-id="feature-123" data-task-id="task-abc" title="Go to pin for Design login UI">
+                                    <span class="codicon codicon-link"></span>
+                                </vscode-link>
+                            </div>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-line">
+                                <vscode-checkbox id="task-def" data-feature-id="feature-123" data-task-id="task-def" class="task-checkbox">
+                                    Implement backend API
+                                </vscode-checkbox>
+                            </div>
+                            <details class="task-description-accordion">
+                                <summary class="task-description-summary">Description</summary>
+                                <p class="task-description-content">
+                                    - Create /login endpoint.
+                                    - Handle password hashing.
+                                    - JWT token generation.
+                                </p>
+                            </details>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-line">
+                                <vscode-checkbox id="task-ghi" data-feature-id="feature-123" data-task-id="task-ghi" class="task-checkbox">
+                                    Write unit tests
+                                </vscode-checkbox>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+    
+            <details class="accordion work-item-accordion bug-item completed" data-item-id="bug-456">
+                <summary>
+                    <vscode-tag>BUG</vscode-tag>
+                    Fix button alignment on mobile
+                    (<vscode-badge>bugfix/button-align</vscode-badge>)
+                    <vscode-badge appearance="success">DONE</vscode-badge>
+                </summary>
+                <div class="accordion-content work-item-details">
+                    <ul class="task-list">
+                        <li class="task-item">
+                            <div class="task-line">
+                                <vscode-checkbox id="task-jkl" data-feature-id="bug-456" data-task-id="task-jkl" class="task-checkbox" checked>
+                                    Verify on iOS
+                                </vscode-checkbox>
+                            </div>
+                        </li>
+                         <li class="task-item">
+                            <div class="task-line">
+                                <vscode-checkbox id="task-mno" data-feature-id="bug-456" data-task-id="task-mno" class="task-checkbox" checked>
+                                    Verify on Android
+                                </vscode-checkbox>
+                            </div>
+                            <details class="task-description-accordion" open>
+                                <summary class="task-description-summary">Description</summary>
+                                <p class="task-description-content">Tested on Pixel and Samsung. Looks good now.</p>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+    
+            </section>
+    </div>
+    </body>
+</html>

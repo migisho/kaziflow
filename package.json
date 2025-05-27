@@ -1,0 +1,72 @@
+{
+  "name": "kaziflow",
+  "displayName": "kaziflow",
+  "description": "manage features and tasks with automated Git branching and merging",
+  "version": "0.0.1",
+  "publisher": "Migisho Masheka",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+  ],
+  "main": "./dist/extension.js",
+  "icon": "images/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kaziflow.kaziflow",
+        "title": "Kazi Flow"
+      }
+    ],
+    "viewsContainers": {
+  "activitybar": [
+    {
+      "id": "kazi-flow",
+      "title": "KaziFlow",
+      "icon": "images/activity-bar-icon.svg"
+    }
+  ]
+},
+"views": {
+  "kazi-flow": [
+    {
+      "id": "kaziflowFeaturesView",
+      "name": "Features & Tasks",
+      "type": "webview",
+      "contextualTitle": "KaziFlow Features"
+    }
+  ]
+}
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.99.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@vscode/webview-ui-toolkit": "^1.4.0"
+  }
+}

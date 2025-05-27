@@ -1,0 +1,336 @@
+/* media/styles.css */
+
+/* --- Globals & Basic Layout --- */
+body {
+    font-family: var(--vscode-font-family);
+    color: var(--vscode-editor-foreground);
+    background-color: var(--vscode-sideBar-background);
+    padding: 0; /* Container will handle padding */
+    margin: 0;
+    overflow-y: auto; /* Allow scrolling for content */
+}
+
+.container {
+    padding: 12px; /* Consistent padding */
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Spacing between major sections */
+}
+
+h1.app-title { /* For the main "KaziFlow" title in main view */
+    color: var(--vscode-titleBar-activeForeground, var(--vscode-editor-foreground));
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.5em; /* Slightly smaller than before for compactness */
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--vscode-editorGroupHeader-tabsBorder, var(--vscode-contrastBorder));
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--vscode-divider-background, var(--vscode-editorWidget-border));
+    margin: 12px 0;
+}
+
+/* --- Sections --- */
+.control-section, 
+.project-info-section, 
+.action-buttons-section, 
+.items-list-section,
+.branches-section { /* General section styling */
+    margin-bottom: 8px;
+}
+
+.project-info-section p {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 1.05em; /* Slightly adjusted */
+}
+.project-info-section strong {
+    color: var(--vscode-textLink-foreground);
+}
+
+.action-buttons-section vscode-button {
+    margin-right: 8px;
+}
+.action-buttons-section vscode-button .codicon {
+    vertical-align: middle; /* From your inline styles */
+}
+
+/* --- Accordion Styling (for Branches & Work Items) --- */
+details.accordion,
+details.work-item-accordion, /* Explicitly target work-item accordions */
+details.branches-accordion,  /* Explicitly target branch accordions */
+details.task-description-accordion /* Explicitly target task description accordions */
+{
+    border: 1px solid var(--vscode-sideBar-border, var(--vscode-contrastBorder));
+    border-radius: 3px; /* Consistent radius */
+    margin-bottom: 6px; /* Spacing between accordions */
+    background-color: var(--vscode-sideBar-background); 
+}
+
+details > summary { /* General summary for all accordions */
+    cursor: pointer;
+    padding: 6px 10px; /* Adjusted padding */
+    font-weight: normal; /* Let specific summaries override if needed */
+    background-color: var(--vscode-button-secondaryBackground, var(--vscode-sideBarSectionHeader-background));
+    border-bottom: 1px solid transparent; /* Only show border if not open */
+    list-style-position: inside;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2px; /* Slightly less than parent for inset look */
+    transition: background-color 0.1s ease-in-out;
+}
+details.work-item-accordion > summary,
+details.branches-accordion > summary {
+    font-weight: 600; /* Bolder for main accordions */
+}
+
+details > summary:hover {
+    background-color: var(--vscode-list-hoverBackground);
+}
+
+details[open] > summary {
+    background-color: var(--vscode-inputOption-activeBackground, var(--vscode-list-activeSelectionBackground));
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid var(--vscode-sideBar-border, var(--vscode-contrastBorder)); /* Border when open */
+}
+
+.accordion-content, /* General content class */
+.work-item-details, 
+.branches-list ul { /* Specific content areas */
+    padding: 10px;
+    background-color: var(--vscode-editor-background, var(--vscode-editorWidget-background));
+    border-top: none; /* Summary has bottom border when open */
+}
+
+/* Specific for branches accordion */
+.branches-list ul { /* Ensure it's targeting the ul for padding */
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.branches-list li {
+    margin-bottom: 5px;
+}
+.branches-list li vscode-button {
+    width: 100%;
+    justify-content: flex-start; 
+}
+.branches-list strong { font-weight: bold; }
+
+/* --- Work Item Styling (Features/Bugs) --- */
+.items-list-section .items-placeholder {
+    color: var(--vscode-editorHint-foreground);
+    padding: 10px;
+    text-align: center;
+    border: 1px dashed var(--vscode-editorHint-border, var(--vscode-contrastBorder));
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.bug-item > summary { border-left: 4px solid var(--vscode-editorError-foreground); }
+.feature-item > summary { border-left: 4px solid var(--vscode-editorInfo-foreground); }
+
+.item-pin-info {
+    font-size: 0.85em;
+    color: var(--vscode-descriptionForeground);
+    margin-bottom: 5px;
+    font-style: italic;
+}
+
+.task-input-container {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Slightly reduced gap */
+    margin-bottom: 8px;
+}
+.task-input-container vscode-text-field {
+    flex-grow: 1;
+}
+
+/* --- Task List Styling --- */
+.task-list {
+    list-style: none;
+    padding-left: 5px; /* Slight indent for tasks */
+    margin-top: 5px;
+}
+li.task-item {
+    margin-bottom: 4px; 
+    padding: 3px 0;
+    border-bottom: 1px solid var(--vscode-tree-tableColumnsBorder, var(--vscode-editorGroup-border));
+}
+li.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+.task-line vscode-checkbox {
+    flex-grow: 1;
+}
+
+/* Task Description Accordion */
+details.task-description-accordion {
+    margin-left: 26px; /* Aligned with checkbox text */
+    margin-top: 2px;
+    border: none;
+    background-color: transparent;
+}
+details.task-description-accordion > summary.task-description-summary {
+    font-size: 0.85em;
+    color: var(--vscode-textLink-foreground);
+    padding: 1px 0px;
+    display: inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    list-style: none; /* Hide default marker */
+    position: relative;
+}
+details.task-description-accordion > summary.task-description-summary::before {
+    content: '▶'; 
+    font-size: 0.75em; /* Smaller marker */
+    margin-right: 4px;
+    display: inline-block;
+    transition: transform 0.1s ease-in-out;
+    color: var(--vscode-icon-foreground); /* Use icon color for marker */
+}
+details.task-description-accordion[open] > summary.task-description-summary::before {
+    transform: rotate(90deg);
+}
+.task-description-content {
+    font-size: 0.85em;
+    color: var(--vscode-descriptionForeground);
+    padding: 5px 8px;
+    background-color: var(--vscode-textBlockQuote-background, rgba(128,128,128,0.1)); /* Slightly more subtle */
+    border-left: 2px solid var(--vscode-textBlockQuote-border, var(--vscode-focusBorder));
+    margin-top: 3px;
+    white-space: pre-wrap;
+    border-radius: 0 2px 2px 0;
+}
+
+/* Pin links styling */
+.item-pin-link, .task-pin-link {
+    margin-left: 8px;
+    cursor: pointer;
+    color: var(--vscode-textLink-foreground);
+    display: inline-flex;
+    align-items: center;
+}
+.item-pin-link:hover, .task-pin-link:hover {
+    color: var(--vscode-textLink-activeForeground);
+}
+.item-pin-link .codicon, .task-pin-link .codicon {
+    font-size: 0.9em; /* Slightly smaller pin icon */
+    margin-right: 3px;
+    vertical-align: middle;
+}
+.codicon { /* General codicon styling if used outside links */
+    vertical-align: middle;
+}
+
+
+/* --- Prompt View Specific Styling --- */
+.prompt-container {
+    text-align: center;
+    padding: 20px 15px; /* More vertical padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* Consistent gap */
+    border: 1px solid var(--vscode-focusBorder); /* Added border from your inline */
+    border-radius: 4px;
+}
+.prompt-container h1.app-title { /* For the "KaziFlow" title in prompt */
+    border-bottom: none; /* No border for prompt title */
+    margin-bottom: 5px;
+}
+.prompt-container p {
+    margin-bottom: 15px;
+    font-size: 1.05em; /* Slightly adjusted */
+}
+.prompt-container vscode-button { /* From your inline styles for prompt */
+    margin-top: 10px;
+    margin-right: 10px;
+}
+/* If you decide to use standard HTML buttons for the prompt for robustness: */
+.prompt-container button.standard-button { 
+    margin: 5px; padding: 8px 15px; 
+    border: 1px solid var(--vscode-button-border, var(--vscode-contrastBorder));
+    color: var(--vscode-button-foreground); background-color: var(--vscode-button-background);
+    cursor: pointer; border-radius: 2px;
+}
+.prompt-container button.standard-button:hover { background-color: var(--vscode-button-hoverBackground); }
+.prompt-container button.standard-button-secondary {
+    background-color: var(--vscode-button-secondaryBackground); color: var(--vscode-button-secondaryForeground);
+}
+.prompt-container button.standard-button-secondary:hover { background-color: var(--vscode-button-secondaryHoverBackground); }
+
+
+/* VSCode UI Toolkit Elements General Styling (can be overridden) */
+vscode-tag {
+    margin-right: 6px;
+    font-weight: 600;
+}
+vscode-badge {
+    margin-left: 6px;
+}
+vscode-badge[appearance="success"] {
+    background-color: var(--vscode-terminalCommandDecoration-successBackground);
+    color: var(--vscode-input-foreground); /* Ensure contrast */
+}
+
+/* --- Task Styling --- */
+.task-name.completed-task {
+    text-decoration: line-through;
+    color: var(--vscode-editorHint-foreground); /* Make it a bit faded */
+}
+
+.no-tasks-message {
+    font-style: italic;
+    color: var(--vscode-descriptionForeground);
+    padding-left: 5px; /* Align with where tasks would be */
+}
+
+/* --- Completed Items Section Styling (for the "Review Tab") --- */
+.items-list-section.completed-items-section h2 {
+    margin-top: 15px; /* Add some space before this section */
+    color: var(--vscode-editorWarning-foreground); /* Example: different color for heading */
+}
+
+.work-item-accordion.completed-item > summary {
+    /* Optional: different style for completed item summaries */
+    background-color: var(--vscode-editorGutter-deletedBackground, var(--vscode-list-inactiveSelectionBackground));
+    opacity: 0.8; /* Make them slightly faded */
+}
+.work-item-accordion.completed-item .item-name {
+    text-decoration: line-through; /* Strikethrough the name of completed items */
+}
+
+/* Ensure summary content items are spaced out nicely */
+details.work-item-accordion > summary {
+    /* display: flex; already there */
+    /* align-items: center; already there */
+    gap: 6px; /* Spacing between tag, name, pin, badge */
+}
+details.work-item-accordion > summary .item-name {
+    flex-grow: 1; /* Allow name to take available space */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 5px; /* Space before pin/badges */
+}
+details.work-item-accordion > summary .no-branch-badge {
+    display: inline-block;
+    min-width: 70px; /* Give it some space like a real badge */
+    font-style: italic;
+    color: var(--vscode-descriptionForeground);
+}
