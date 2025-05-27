@@ -2,7 +2,7 @@
   "name": "kaziflow",
   "displayName": "kaziflow",
   "description": "manage features and tasks with automated Git branching and merging",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "MigishoMasheka",
   "engines": {
     "vscode": "^1.95.0"
