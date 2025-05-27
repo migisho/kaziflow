@@ -3,10 +3,11 @@
   "displayName": "kaziflow",
   "description": "manage features and tasks with automated Git branching and merging",
   "version": "0.0.1",
-  "publisher": "Migisho Masheka",
+  "publisher": "MigishoMasheka",
   "engines": {
-    "vscode": "^1.99.0"
+    "vscode": "^1.95.0"
   },
+  "license": "MIT",
   "categories": [
     "Other"
   ],
@@ -19,7 +20,23 @@
       {
         "command": "kaziflow.kaziflow",
         "title": "Kazi Flow"
-      }
+      },
+       {
+            "command": "kaziflowFeaturePlugin.createFeature",
+            "title": "KaziFlow: Create New Item (Feature/Bug)",
+            "category": "KaziFlow" 
+        },
+        {
+            "command": "kaziflowFeaturePlugin.refreshWebView",
+            "title": "KaziFlow: Refresh View",
+            "category": "KaziFlow",
+            "icon": "$(refresh)"
+        },
+        {
+            "command": "kaziflow.createItemFromPin",
+            "title": "KaziFlow: Create Item/Task from Pin",
+            "category": "KaziFlow"
+        }
     ],
     "viewsContainers": {
   "activitybar": [
@@ -29,6 +46,10 @@
       "icon": "images/activity-bar-icon.svg"
     }
   ]
+},
+"repository": {
+  "type": "git",
+  "url": "https://github.com/migisho/kaziflow.git"
 },
 "views": {
   "kazi-flow": [
@@ -55,7 +76,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/vscode": "^1.99.0",
+    "@types/vscode": "^1.95.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
     "@vscode/test-cli": "^0.0.10",
